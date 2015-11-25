@@ -1,0 +1,335 @@
+//Revistas indexadas en publindex segun entidad territorial de la institución editora
+Table tabla;
+PImage mapa;
+float dim;
+PFont peque, grande;
+
+void setup() {
+  size(1350, 700, P3D);
+  tabla=loadTable("revistas.csv", "header");
+  mapa=loadImage("mc.png");
+  peque=loadFont("AvenirLTStd-Light-28.vlw");
+  grande=loadFont("Gotham-Black-80.vlw");
+}
+
+void draw() {
+  background(0);
+  camera(width/2, height/2, 30000, width/2, height/2, 0, 0, 1, 0);
+  lights();
+
+  translate(300, 0, 28900);
+ 
+  //Título
+  textFont(grande);
+  fill(27, 230, 220);
+  text("REVISTAS", -850, 200);
+  text("INDEXADAS", -850, 300);
+  text("POR", -850, 400);
+  text("DEPARTAMENTO", -850, 500);
+  text("AÑO 2013", -850, 600);
+
+
+
+  //Mapa de colombia
+  pushMatrix();
+  noFill();
+  translate(-30, -200, -400);
+  image(mapa, 100, -300);
+  popMatrix();
+
+  noStroke();
+  fill(255, 150);
+  textFont(peque);
+
+  //Bogotá
+  pushMatrix();
+  noStroke();
+  translate(500, 300);
+  dim=map(tabla.getInt(1, 10)+tabla.getInt(10, 10), 0, 263, 0, 80);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 500, 0);
+  text(tabla.getString(1, 0)+": "+tabla.getInt(1, 10), 520, 0);
+  popMatrix();
+
+  //Antioquia
+  pushMatrix();
+  noStroke();
+  translate(400, 150);
+  dim=map(tabla.getInt(2, 10), 0, 263, 0, 180);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -300, 0);
+  text(tabla.getString(2, 0)+": "+tabla.getInt(2, 10), -480, 0);
+  popMatrix();
+
+  //Atlántico
+  pushMatrix();
+  noStroke();
+  translate(430, -150);
+  dim=map(tabla.getInt(3, 10), 0, 263, 0, 200);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -130, 0);
+  text(tabla.getString(3, 0)+": "+tabla.getInt(3, 10), -300, 0);
+  popMatrix();
+
+  //Santander
+  pushMatrix();
+  noStroke();
+  translate(540, 150);
+  dim=map(tabla.getInt(4, 10), 0, 263, 0, 200);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 500, 0);
+  text(tabla.getString(4, 0)+": "+tabla.getInt(4, 10), 520, 0);
+  popMatrix();
+
+  //Valle del Cauca
+  pushMatrix();
+  noStroke();
+  translate(300, 380);
+  dim=map(tabla.getInt(5, 10), 0, 263, 0, 200);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -130, 0);
+  text(tabla.getString(5, 0)+": "+tabla.getInt(5, 10), -380, 0);
+  popMatrix();
+
+  //Caldas
+  pushMatrix();
+  noStroke();
+  translate(400, 250);
+  dim=map(tabla.getInt(6, 10), 0, 263, 0, 200);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 830, 0);
+  text(tabla.getString(6, 0)+": "+tabla.getInt(6, 10), 850, 0);
+  popMatrix();
+
+  //Boyacá
+  pushMatrix();
+  noStroke();
+  translate(600, 220);
+  dim=map(tabla.getInt(7, 10), 0, 263, 0, 200);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 450, 0);
+  text(tabla.getString(7, 0)+": "+tabla.getInt(7, 10), 470, 0);
+  popMatrix();
+
+  //Bolívar
+  pushMatrix();
+  noStroke();
+  translate(410, -100);
+  dim=map(tabla.getInt(8, 10), 0, 263, 0, 200);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -130, 0);
+  text(tabla.getString(8, 0)+": "+tabla.getInt(8, 10), -250, 0);
+  popMatrix();
+
+  //Risaralda
+  pushMatrix();
+  noStroke();
+  translate(350, 270);
+  dim=map(tabla.getInt(9, 10), 0, 263, 0, 250);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -130, 0);
+  text(tabla.getString(9, 0)+": "+tabla.getInt(9, 10), -280, 0);
+  popMatrix();
+
+  //Norte de Santander
+  pushMatrix();
+  noStroke();
+  translate(600, 50);
+  dim=map(tabla.getInt(11, 10), 0, 263, 0, 300);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 180, 0);
+  text(tabla.getString(11, 0)+": "+tabla.getInt(11, 10), 200, 0);
+  popMatrix();
+
+  //Nariño
+  pushMatrix();
+  noStroke();
+  translate(200, 550);
+  dim=map(tabla.getInt(12, 10), 0, 263, 0, 300);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -130, 0);
+  text(tabla.getString(12, 0)+": "+tabla.getInt(12, 10), -270, 0);
+  popMatrix();
+
+  //Quindío
+  pushMatrix();
+  noStroke();
+  translate(370, 325);
+  dim=map(tabla.getInt(13, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -280, 0);
+  text(tabla.getString(13, 0)+": "+tabla.getInt(13, 10), -430, 0);
+  popMatrix();
+
+  //Magdalena
+  pushMatrix();
+  noStroke();
+  translate(480, -140);
+  dim=map(tabla.getInt(14, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 230, 0);
+  text(tabla.getString(14, 0)+": "+tabla.getInt(14, 10), 250, 0);
+  popMatrix();
+
+  //Huila
+  pushMatrix();
+  noStroke();
+  translate(390, 450);
+  dim=map(tabla.getInt(15, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 680, 0);
+  text(tabla.getString(15, 0)+": "+tabla.getInt(15, 10), 700, 0);
+  popMatrix();
+
+  //Cauca
+  pushMatrix();
+  noStroke();
+  translate(290, 470);
+  dim=map(tabla.getInt(16, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -280, 0);
+  text(tabla.getString(16, 0)+": "+tabla.getInt(16, 10), -400, 0);
+  popMatrix();
+
+  //Tolima
+  pushMatrix();
+  noStroke();
+  translate(400, 350);
+  dim=map(tabla.getInt(17, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 730, 0);
+  text(tabla.getString(17, 0)+": "+tabla.getInt(17, 10), 750, 0);
+  popMatrix();
+
+  //Córdoba
+  pushMatrix();
+  noStroke();
+  translate(370, 30);
+  dim=map(tabla.getInt(18, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -200, 0);
+  text(tabla.getString(18, 0)+": "+tabla.getInt(18, 10), -350, 0);
+  popMatrix();
+
+  //Chocó
+  pushMatrix();
+  noStroke();
+  translate(300, 250);
+  dim=map(tabla.getInt(19, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.7);
+  line(0, 0, 0, -30);
+  strokeWeight(0.5);
+  line(0, -30, -250, -30);
+  text(tabla.getString(19, 0)+": "+tabla.getInt(19, 10), -380, -30);
+  popMatrix();
+
+  //Caquetá
+  pushMatrix();
+  noStroke();
+  translate(500, 600);
+  dim=map(tabla.getInt(20, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -350, 0);
+  text(tabla.getString(20, 0)+": "+tabla.getInt(20, 10), -500, 0);
+  popMatrix();
+
+  //Meta
+  pushMatrix();
+  noStroke();
+  translate(600, 400);
+  dim=map(tabla.getInt(21, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, 580, 0);
+  text(tabla.getString(21, 0)+": "+tabla.getInt(21, 10), 600, 0);
+  popMatrix();
+
+  //Amazonas
+  pushMatrix();
+  noStroke();
+  translate(700, 750);
+  dim=map(tabla.getInt(22, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -230, 0);
+  text(tabla.getString(22, 0)+": "+tabla.getInt(22, 10), -400, 0);
+  popMatrix();
+
+  //Sucre
+  pushMatrix();
+  noStroke();
+  translate(420, -30);
+  dim=map(tabla.getInt(23, 10), 0, 263, 0, 350);
+  fill(255);
+  sphere(dim);
+  stroke(255);
+  strokeWeight(0.5);
+  line(0, 0, -180, 0);
+  text(tabla.getString(23, 0)+": "+tabla.getInt(23, 10), -300, 0);
+  popMatrix();
+
+  save("mapa.jpg");
+
+  println(tabla.getInt(1, 10));
+}
